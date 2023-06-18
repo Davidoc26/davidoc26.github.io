@@ -12,13 +12,13 @@
                         <h1 class="tracking-widest text-lg title-font font-medium text-indigo-500 mb-1"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
                         <div class="flex gap-2">
                             {{ range.Params.Categories }}
-                            <p class="title-font text-sm font-medium text-gray-900 mb-3"><a href="/categories/{{. | lower}}">{{with i18n . }}{{ . | humanize }}{{else}}{{.|humanize}}{{end}}</a></p>
+                            <p class="title-font text-sm font-medium text-gray-900 mb-3"><a href="{{ absLangURL "/categories/" }}{{. | lower}}">{{with i18n . }}{{ . | humanize }}{{else}}{{.|humanize}}{{end}}</a></p>
                             {{ end }}
                         </div>
                         <p class="leading-relaxed mb-8">{{.Summary}}</p>
                         <div class="flex flex-wrap gap-2">
                             {{ range.Params.Tags }}
-                            <p class="title-font text-sm font-medium text-gray-900 mb-2"><a href="/tags/{{. | lower }}">{{ . }}</a></p>
+                            <p class="title-font text-sm font-medium text-gray-900 mb-2"><a href="{{ absLangURL "/tags/" }}{{. | lower }}">{{ . }}</a></p>
                             {{ end }}
                             <div class="flex-grow"></div>
                             <div class="self-end">
