@@ -11,9 +11,9 @@ summary: About software vulnerabilities that can become a cybersecurity problem 
 ![Sevak Sargsyan](/images/sevak-sargsyan-interview/main.webp)
 
 **About software vulnerabilities that can become a cybersecurity problem and provoke hacker
-attacks, new trends in the IT industry, education in this field and much more with Sevak Sargsyan, head of the Department of
-System Programming at the Russian-Armenian University, a specialist in the field of compiler technologies and
-program analysis, candidate of Physical and Mathematical Sciences.**
+attacks, new trends in the IT industry, education in this area and much more, we talked with the Head of the System
+Programming Department of the Russian-Armenian University, a specialist in the field of compiler technologies and
+analysis programs, Candidate of Physical and Mathematical Sciences Sevak Sargsyan.**
 
 _- Name the most common security problems in software._
 
