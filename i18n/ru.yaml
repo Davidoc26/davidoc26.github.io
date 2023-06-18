@@ -1,0 +1,19 @@
+# Menu
+menu_articles: "Статьи"
+menu_categories: "Категории"
+
+# Taxonomy
+categories: "Категории"
+tags: "Теги"
+
+# Button
+Articles: "Статьи"
+articles: "Статьи"
+
+# Categories
+Interview: "Интервью"
+interview: "Интервью"
+News: "Новости"
+news: "Новости"
+
+Some interesting articles: "Статьи"

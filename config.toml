@@ -1,0 +1,26 @@
+baseURL = 'http://example.org/'
+languageCode = 'ru'
+title = "David Eritsyan's blog"
+defaultContentLanguage = 'ru'
+paginate =  3
+
+[languages]
+    [languages.ru]
+        contentDir = 'content/russian'
+        languageName = 'Russian'
+        weight = 10
+    [languages.en]
+        contentDir = 'content/english'
+        languageName = 'English'
+        weight = 20
+
+[markup.goldmark.renderer]
+unsafe = true
+
+
+[menu]
+    [[menu.main]]
+    name = 'menu_articles'
+    pageRef = '/articles'
+    weight = 10
+
