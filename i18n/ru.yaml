@@ -1,6 +1,7 @@
 # Menu
 menu_articles: "Статьи"
 menu_categories: "Категории"
+menu_programming: "Программирование"
 
 # Taxonomy
 categories: "Категории"

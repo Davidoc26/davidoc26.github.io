@@ -1,7 +1,7 @@
 ---
 title: "Should You Use Neovim?"
 date: 2023-09-17T10:54:43+04:00
-summary: "There are several categories of programmers who like to customize their workspace from scratch, every detail, every little thing,
+summary: "There are several categories of programmers. Those who like to customize their workspace from scratch, every detail, every little thing,
 and there are those who like to use something already ready and probably modify it a little for themselves (for example, change the editor theme)
 and thus, do not spend a lot of time on it. But there are those who do not want to spend a lot of time, but want to customize the editor for themselves."
 ---
@@ -10,7 +10,7 @@ and thus, do not spend a lot of time on it. But there are those who do not want 
 
 ## Introduction
 
-There are several categories of programmers who like to customize their workspace from scratch, every detail, every little thing,
+There are several categories of programmers. Those who like to customize their workspace from scratch, every detail, every little thing,
 and there are those who like to use something already ready and probably modify it a little for themselves (for example, change the editor theme)
 and thus, do not spend a lot of time on it. But there are those who do not want to spend a lot of time, but want to customize the editor for themselves.
 
