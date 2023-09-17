@@ -23,4 +23,7 @@ unsafe = true
     name = 'menu_articles'
     pageRef = '/articles'
     weight = 10
-
+    [[menu.main]]
+    name = 'menu_programming'
+    pageRef = '/programming'
+    weight = 20

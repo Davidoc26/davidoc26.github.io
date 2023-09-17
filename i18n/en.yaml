@@ -1,12 +1,14 @@
 # Menu
 menu_articles: "Articles"
 menu_categories: "Categories"
+menu_programming: "Programming"
 
 # Taxonomy
 categories: "Categories"
 
 # Button
 articles: "Articles"
+Articles: "Articles"
 
 # Categories
 Interview: "Interview"

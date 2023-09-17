@@ -1,20 +1,59 @@
 <header class="text-gray-600 body-font">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a class="title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <a class="ml-3 text-xl" href="{{ absLangURL "/" }}">{{ site.Title }}</a>
-        </a>
+    <div class="py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-gray-900 text-2xl ml-3">
+                <a href="{{ absLangURL "/" }}" class="text-xl">{{ site.Title }}</a>
+            </h1>
+            <div class="hidden sm:flex space-x-4">
+                <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                    {{ range .Site.Menus.main }}
+                    <a href="{{ .URL | absLangURL }}" class="mr-5 hover:text-gray-900">{{ i18n .Name }}</a>
+                    {{ end }}
+                </nav>
+                {{ if .IsTranslated }}
+                <nav class="flex flex-wrap items-center text-base justify-center">
+                    {{ range .Translations }}
+                    <a class="text-indigo-500 font-bold" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+                    {{ end }}
+                </nav>
+                {{ end }}
+            </div>
+            <div class="sm:hidden">
+                <button id="menuButton" class="text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden sm:hidden mr-10">
         <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
             {{ range .Site.Menus.main }}
             <a href="{{ .URL | absLangURL }}" class="mr-5 hover:text-gray-900">{{ i18n .Name }}</a>
             {{ end }}
         </nav>
-        {{ if .IsTranslated }}
-        <nav class="flex flex-wrap items-center text-base justify-center">
-            {{ range .Translations }}
-            <a class="text-indigo-500 font-bold" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+        <div>
+            {{ if .IsTranslated }}
+            <nav class="flex flex-wrap items-center text-base justify-center my-3">
+                {{ range .Translations }}
+                <a class="text-indigo-500 font-bold" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+                {{ end }}
+            </nav>
             {{ end }}
-        </nav>
-        {{ end }}
+        </div>
     </div>
     <hr>
 </header>
+<script>
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
