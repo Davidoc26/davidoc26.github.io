@@ -52,9 +52,10 @@ Neovim имеет активное сообщество пользователе
 
 Итак, существуют разные конфигурации, такие как NvChad, LunarVim, однако мы используем AstroNvim, поскольку он изначально обладает широкими возможностями, которые упростят нам работу в последующем конфигурировании.
 Установка действительно простая, вам нужно всего лишь клонировать репозиторий и запустить nvim.
-
-> git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
-> nvim
+{{< highlight bash >}}
+ git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+ nvim
+{{< / highlight >}}
 
 Далее, нам нужно ознакомиться с пакетным менеджером Mason, это плагин Neovim, который нам установил AstroNvim. 
 Одной лишь командой **:Mason** и через удобный интерфейс, мы можем установить необходимые нам линтеры, форматтеры, [LSP сервера](https://en.wikipedia.org/wiki/Language_Server_Protocol)
@@ -80,12 +81,28 @@ AstroNvim так же имеет репозиторий с определенн�
 Для этого вам нужно создать свой ["User configuration"](https://astronvim.com/configuration/manage_user_config).
 При желании, вы можете создать удаленный репозиторий, но мы сделаем это локально.
 
-> git clone https://github.com/AstroNvim/user_example.git ~/.config/nvim/lua/user
+{{< highlight bash >}}
+git clone https://github.com/AstroNvim/user_example.git ~/.config/nvim/lua/user
+{{< / highlight >}}
 
 Далее, в файле *~/.config/nvim/lua/user/plugins* вы можете указать, какие готовые подборки из [AstroCommunity repository](https://github.com/AstroNvim/astrocommunity/) вы хотите использовать,
 в нашем случае это [astrocommunity.pack.cpp](https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/pack/cpp).
 
 {{< figure src="/images/programming/should-i-use-neovim/plugins.webp" >}}
+
+{{< highlight lua "linenos=inline,hl_lines=6">}}
+return {
+  -- Add the community repository of plugin specifications
+  "AstroNvim/astrocommunity",
+  -- example of importing a plugin, comment out to use it or add your own
+  -- available plugins can be found at https://github.com/AstroNvim/astrocommunity
+    { import = "astrocommunity.pack.cpp" },
+    { import = "astrocommunity.colorscheme.dracula-nvim" },
+    { import = "astrocommunity.pack.tailwindcss" },
+    { import = "astrocommunity.pack.html-css" },
+    { import = "astrocommunity.pack.typescript" },
+}
+{{< / highlight >}}
 
 При следующем входе в nvim, все необходимые плагины будут установлены автоматически.
 
@@ -96,7 +113,9 @@ AstroNvim так же имеет репозиторий с определенн�
 В данной статье я использовал тему "Dracula", которая была установлена через AstroCommunity repository.
 Изменять тему и иные настройки вы можете в файле *~/.config/nvim/lua/user/init.lua* 
 
->  colorscheme = "dracula",
+{{< highlight lua "linenos=inline,linenostart=21">}}
+colorscheme = "dracula",
+{{< / highlight >}}
 
 Давайте так же изменим дефолтный home screen.
 Сделать это можно в файле *~/.config/nvim/lua/user/plugins/core.lua*.

@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+.highlight div,
+.highlight pre {
+  overflow-x: auto;
+}
