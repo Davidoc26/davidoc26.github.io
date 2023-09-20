@@ -88,8 +88,6 @@ git clone https://github.com/AstroNvim/user_example.git ~/.config/nvim/lua/user
 Далее, в файле *~/.config/nvim/lua/user/plugins* вы можете указать, какие готовые подборки из [AstroCommunity repository](https://github.com/AstroNvim/astrocommunity/) вы хотите использовать,
 в нашем случае это [astrocommunity.pack.cpp](https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/pack/cpp).
 
-{{< figure src="/images/programming/should-i-use-neovim/plugins.webp" >}}
-
 {{< highlight lua "linenos=inline,hl_lines=6">}}
 return {
   -- Add the community repository of plugin specifications
