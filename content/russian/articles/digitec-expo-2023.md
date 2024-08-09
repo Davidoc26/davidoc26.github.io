@@ -8,6 +8,7 @@ tags:
 categories:
   - interview
   - news
+image: 'images/digitec-expo-2023/IMG000.webp'
 ---
 
 {{< figure src="/images/digitec-expo-2023/IMG000.webp"  >}}

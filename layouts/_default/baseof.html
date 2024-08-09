@@ -11,9 +11,12 @@
     {{ if .IsPage}}
     <meta property="og:description" content="{{.Summary}}">
     <meta property="og:title" content="{{.Title}}">
+    {{ if .Page.Params.image }}
+    <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Page.Params.image }}">
+    {{end}}
     {{end}}
     <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ block "title" . }}{{ end }}{{ .Site.Title }}</title>
     <link rel="stylesheet" href="/css/styles.css">
