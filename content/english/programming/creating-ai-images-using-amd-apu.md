@@ -22,10 +22,6 @@ Many people believe that generating images requires significant computing power 
 this is partly true, and many opt for cloud solutions, **it's actually possible to create basic images locally on your
 computer with just an APU** (a processor with an integrated graphics).
 
-Recently, on July 14, the new Linux kernel 6.10 was released. The new version has added the ability for ROCm to use not
-only
-VRAM, [but also make allocations in the GTT domain](https://www.phoronix.com/news/Linux-6.10-AMDKFD-Small-APUs).
-
 On July 14, the new Linux kernel 6.10 was released, bringing an important update: ROCm now supports not only VRAM [but
 also allocations in the GTT domain](https://www.phoronix.com/news/Linux-6.10-AMDKFD-Small-APUs). Previously, you had to
 adjust VRAM settings in the BIOS, and some BIOS versions
@@ -79,10 +75,9 @@ pamac install python-torchvision-rocm
 git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 cd stable-diffusion-webui
 
-python -m venv venv
+python3.10 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-source venv/bin/activate
 {{< / highlight >}}
 
 6. **Launch**. Run the following inside the project root to start webui:
@@ -134,7 +129,7 @@ reboot
 {{< / highlight >}}
 
 
-To check the allocated GTT memory, reboot and use the command:
+To check the allocated GTT memory, use the command:
 {{< highlight bash>}}
 sudo dmesg | grep 'amdgpu.*memory*'
 {{< / highlight >}}
