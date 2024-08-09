@@ -3,7 +3,6 @@ title: "Creating AI images using AMD integrated graphics card (APU)"
 date: 2024-08-09T13:09:25+04:00
 tags:
   - AI
-summary: About software vulnerabilities that can become a cybersecurity problem and provoke hacker attacks, new trends in the IT industry, education in this area and much more, we talked with the head of the RAU System Programming Department Sevak Sargsyan.
 ---
 
 {{< figure src="/images/programming/creating-ai-images/webui.webp" >}}
