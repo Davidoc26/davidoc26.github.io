@@ -17,7 +17,7 @@
     </section>
     
     {{ .Content }}
- 
+
     <div class="mt-4 mb-4 text-center">
         {{ range .Params.tags }}
         <a href="{{ absLangURL "/tags/" }}{{. | lower}}" class="no-underline mr-2 text-sm py-1 px-2 bg-gray-200 rounded">{{ with
@@ -30,4 +30,9 @@
     </div>
 
 </article>
+{{ end }}
+
+{{ define "scripts" }}
+<script src="/js/zoom.js"></script>
+<script>mediumZoom(document.querySelectorAll("img"))</script>
 {{ end }}
