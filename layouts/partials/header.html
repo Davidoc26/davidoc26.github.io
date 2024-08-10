@@ -1,13 +1,13 @@
-<header class="text-gray-600 body-font">
+<header class="text-gray-600 dark:text-white body-font">
     <div class="py-4 px-6">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-gray-900 text-2xl ml-3">
+            <h1 class="text-gray-900 text-2xl ml-3 dark:text-white">
                 <a href="{{ absLangURL "/" }}" class="text-xl">{{ site.Title }}</a>
             </h1>
             <div class="hidden sm:flex space-x-4">
                 <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
                     {{ range .Site.Menus.main }}
-                    <a href="{{ .URL | absLangURL }}" class="mr-5 hover:text-gray-900">{{ i18n .Name }}</a>
+                    <a href="{{ .URL | absLangURL }}" class="mr-5 hover:text-gray-900 dark:hover:text-slate-300">{{ i18n .Name }}</a>
                     {{ end }}
                 </nav>
                 {{ if .IsTranslated }}
@@ -47,7 +47,7 @@
             {{ end }}
         </div>
     </div>
-    <hr>
+    <hr class="h-px bg-gray-200 border-0 dark:bg-slate-400">
 </header>
 <script>
     const menuButton = document.getElementById('menuButton');
