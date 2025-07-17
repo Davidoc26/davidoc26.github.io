@@ -2,7 +2,7 @@ baseURL = 'http://example.org/'
 languageCode = 'ru'
 title = "David Eritsyan's blog"
 defaultContentLanguage = 'ru'
-paginate =  3
+pagination.pagerSize =  3
 
 [languages]
     [languages.ru]
