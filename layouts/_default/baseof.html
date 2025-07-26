@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8">
     {{ if .IsTranslated }}
-    {{ range .Translations }}
-    <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" title="{{ .Language.LanguageName }}">
+        {{ range .Translations }}
+            <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}"
+                  title="{{ .Language.LanguageName }}">
+        {{ end }}
     {{ end }}
+    {{ if .IsPage }}
+        <meta property="og:description" content="{{ .Summary }}">
+        <meta property="og:title" content="{{ .Title }}">
+        {{ if .Page.Params.image }}
+            <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Page.Params.image }}">
+        {{ end }}
     {{ end }}
-    {{ if .IsPage}}
-    <meta property="og:description" content="{{.Summary}}">
-    <meta property="og:title" content="{{.Title}}">
-    {{ if .Page.Params.image }}
-    <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Page.Params.image }}">
-    {{end}}
-    {{end}}
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -26,17 +27,41 @@
             height: 100%;
         }
     </style>
+    <script>
+        (function () {
+            const root = document.documentElement;
+            const theme = localStorage.theme;
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+            // Применяем начальную тему
+            if (theme === 'dark' || (!theme && mediaQuery.matches)) {
+                root.classList.add('dark');
+            } else {
+                root.classList.remove('dark');
+            }
+
+            if (!theme) {
+                mediaQuery.addEventListener('change', (e) => {
+                    if (e.matches) {
+                        root.classList.add('dark');
+                    } else {
+                        root.classList.remove('dark');
+                    }
+                });
+            }
+        })();
+    </script>
 </head>
 
 <body class="bg-white dark:bg-slate-950 text-black dark:text-white flex flex-col">
-    {{ partial "header.html" . }}
-    <main class="flex-grow">
-        {{ block "main" . }}
-        {{ end }}
-    </main>
-    {{ partial "footer.html" . }}
-    {{ block "scripts" . }}
+{{ partial "header.html" . }}
+<main class="flex-grow">
+    {{ block "main" . }}
     {{ end }}
+</main>
+{{ partial "footer.html" . }}
+{{ block "scripts" . }}
+{{ end }}
 </body>
 
 </html>

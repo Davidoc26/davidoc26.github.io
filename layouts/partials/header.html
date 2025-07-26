@@ -1,59 +1,97 @@
-<header class="text-gray-600 dark:text-white body-font">
-    <div class="py-4 px-6">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-gray-900 text-2xl ml-3 dark:text-white">
-                <a href="{{ absLangURL "/" }}" class="text-xl">{{ site.Title }}</a>
-            </h1>
-            <div class="hidden sm:flex space-x-4">
-                <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                    {{ range .Site.Menus.main }}
-                    <a href="{{ .URL | absLangURL }}" class="mr-5 hover:text-gray-900 dark:hover:text-slate-300">{{ i18n .Name }}</a>
-                    {{ end }}
-                </nav>
-                {{ if .IsTranslated }}
-                <nav class="flex flex-wrap items-center text-base justify-center">
-                    {{ range .Translations }}
-                    <a class="text-indigo-500 font-bold" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
-                    {{ end }}
-                </nav>
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 text-gray-800 dark:text-white shadow-sm">
+    <div class="container mx-auto flex justify-between items-center px-4 py-4">
+        <h1 class="text-2xl font-bold">
+            <a href="{{ absLangURL "/" }}" class="hover:text-indigo-600 transition-colors">
+                {{ site.Title }}
+            </a>
+        </h1>
+        <div class="flex items-center space-x-4">
+            <nav class="hidden sm:flex items-center space-x-6">
+                {{ range .Site.Menus.main }}
+                    <a href="{{ .URL | absLangURL }}"
+                       class="text-base font-medium hover:underline underline-offset-4 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                        {{ i18n .Name }}
+                    </a>
                 {{ end }}
-            </div>
-            <div class="sm:hidden flex items-center">
-                <button id="menuButton">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                        class="w-6 h-6 text-gray-900 dark:text-slate-400">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16">
-                        </path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
 
-    <div id="mobileMenu" class="hidden sm:hidden mb-2">
-        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            {{ range .Site.Menus.main }}
-            <a href="{{ .URL | absLangURL }}" class="mr-5 hover:text-gray-900">{{ i18n .Name }}</a>
-            {{ end }}
-        </nav>
-        <div>
-            {{ if .IsTranslated }}
-            <nav class="flex flex-wrap items-center text-base justify-center my-3">
-                {{ range .Translations }}
-                <a class="text-indigo-500 font-bold" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+                {{ if .IsTranslated }}
+                    <nav class="flex items-center space-x-2">
+                        {{ range .Translations }}
+                            <a href="{{ .Permalink }}"
+                               class="text-sm font-semibold px-2 py-1 rounded hover:bg-indigo-100 dark:hover:bg-slate-800 transition
+                   {{ if eq $.Site.Language.Lang .Lang }}
+                       text-indigo-600 dark:text-indigo-400 underline underline-offset-4
+                   {{ else }}
+                       text-gray-500 dark:text-gray-400
+                   {{ end }}">
+                                {{ .Language.LanguageName }}
+                            </a>
+                        {{ end }}
+                    </nav>
                 {{ end }}
             </nav>
-            {{ end }}
+
+            <button id="themeToggle" aria-label="Toggle dark mode"
+                    class="text-xl cursor-pointer hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                🌓
+            </button>
+
+            <button id="menuButton" aria-label="Toggle menu" class="sm:hidden cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor"
+                     class="w-6 h-6 text-gray-800 dark:text-slate-200">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
         </div>
     </div>
-    <hr class="h-px bg-gray-200 border-0 dark:bg-slate-400">
-</header>
-<script>
-    const menuButton = document.getElementById('menuButton');
-    const mobileMenu = document.getElementById('mobileMenu');
 
-    menuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+    <div id="mobileMenu" class="sm:hidden hidden px-4 pb-4 space-y-2">
+        <nav class="flex flex-col space-y-2">
+            {{ range .Site.Menus.main }}
+                <a href="{{ .URL | absLangURL }}"
+                   class="block text-base font-medium hover:underline underline-offset-4 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    {{ i18n .Name }}
+                </a>
+            {{ end }}
+
+            {{ if .IsTranslated }}
+                <div class="flex space-x-2 mt-2">
+                    {{ range .Translations }}
+                        <a href="{{ .Permalink }}"
+                           class="text-sm font-semibold px-2 py-1 rounded hover:bg-indigo-100 dark:hover:bg-slate-800 transition
+                 {{ if eq $.Site.Language.Lang .Lang }}
+                     text-indigo-600 dark:text-indigo-400 underline underline-offset-4
+                 {{ else }}
+                     text-gray-500 dark:text-gray-400
+                 {{ end }}">
+                            {{ .Language.LanguageName }}
+                        </a>
+                    {{ end }}
+                </div>
+            {{ end }}
+        </nav>
+    </div>
+</header>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('menuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuButton?.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('hidden');
+        });
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeToggle = document.getElementById('themeToggle');
+        const root = document.documentElement;
+
+        themeToggle?.addEventListener('click', () => {
+            const isDark = root.classList.toggle('dark');
+            localStorage.theme = isDark ? 'dark' : 'light';
+        });
     });
 </script>

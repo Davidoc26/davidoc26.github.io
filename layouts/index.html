@@ -1,56 +1,88 @@
 {{ define "main" }}
-<section class="text-gray-600 body-font">
-    <div class="container h-full mt-16 mx-auto flex px-5 py-2 items-center justify-center flex-col">
-        <img class="h-64 w-64 object-cover object-center rounded-full border-4" alt="hero"
-             src="/avatar.jpg">
-        <div class="text-center lg:w-2/3 w-full mt-2">
-            <div class="flex justify-center space-x-4 my-4">
-                <a href="https://github.com/Davidoc26" class="rounded-full flex items-center justify-center ">
-                    <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-10 w-10 text-black dark:text-white"
-                            fill="currentColor"
-                            viewBox="0 0 24 24">
-                        <path
-                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                </a>
-                <a href="https://t.me/davidoc26" class="rounded-full flex items-center justify-center text-white">
-                    <svg
-                            class="h-10 w-10 text-blue-400"
-                            fill="currentColor"
-                            viewbox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xml:space="preserve"
-                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <section
+            class="min-h-screen py-16 px-4 bg-gradient-to-b from-white via-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-all">
+        <div class="container max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center backdrop-blur-md bg-white/10 dark:bg-white/5 p-8 rounded-2xl shadow transition-all transform hover:shadow-lg hover:shadow-indigo-200 dark:hover:shadow-indigo-800 hover:ring-1 hover:ring-indigo-300 dark:hover:ring-indigo-500">
+            <div class="flex flex-col items-center lg:items-center text-center lg:text-left">
+                <img src="/avatar.jpg" alt="avatar"
+                     class="h-42 w-42 lg:h-56 lg:w-56 object-cover rounded-full border-4 border-indigo-500/30 shadow-lg mb-4"/>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">David Eritsyan</h2>
+                <div class="flex gap-4 mt-4">
+                    <a href="https://github.com/Davidoc26" class="rounded-full flex items-center justify-center ">
+                        <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-10 w-10 text-black dark:text-white"
+                                fill="currentColor"
+                                viewBox="0 0 24 24">
+                            <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://t.me/davidoc26" class="rounded-full flex items-center justify-center text-white">
+                        <svg
+                                class="h-10 w-10 text-blue-400"
+                                fill="currentColor"
+                                viewbox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xml:space="preserve"
+                                style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
                               <path
                                       id="telegram-1"
                                       d="M18.384,22.779c0.322,0.228 0.737,0.285 1.107,0.145c0.37,-0.141 0.642,-0.457 0.724,-0.84c0.869,-4.084 2.977,-14.421 3.768,-18.136c0.06,-0.28 -0.04,-0.571 -0.26,-0.758c-0.22,-0.187 -0.525,-0.241 -0.797,-0.14c-4.193,1.552 -17.106,6.397 -22.384,8.35c-0.335,0.124 -0.553,0.446 -0.542,0.799c0.012,0.354 0.25,0.661 0.593,0.764c2.367,0.708 5.474,1.693 5.474,1.693c0,0 1.452,4.385 2.209,6.615c0.095,0.28 0.314,0.5 0.603,0.576c0.288,0.075 0.596,-0.004 0.811,-0.207c1.216,-1.148 3.096,-2.923 3.096,-2.923c0,0 3.572,2.619 5.598,4.062Zm-11.01,-8.677l1.679,5.538l0.373,-3.507c0,0 6.487,-5.851 10.185,-9.186c0.108,-0.098 0.123,-0.262 0.033,-0.377c-0.089,-0.115 -0.253,-0.142 -0.376,-0.064c-4.286,2.737 -11.894,7.596 -11.894,7.596Z"/>
                             </svg>
-                </a>
-                <a href="https://vk.me/davidoc26" class="rounded-full flex items-center justify-center text-white">
-                    <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-10 w-10 text-blue-500"
-                            fill="currentColor"
-                            viewBox="0 0 24 24">
-                        <path
-                                class="st0"
-                                d="M13.162 18.994c.609 0 .858-.406.851-.915-.031-1.917.714-2.949 2.059-1.604 1.488 1.488 1.796 2.519 3.603 2.519h3.2c.808 0 1.126-.26 1.126-.668 0-.863-1.421-2.386-2.625-3.504-1.686-1.565-1.765-1.602-.313-3.486 1.801-2.339 4.157-5.336 2.073-5.336h-3.981c-.772 0-.828.435-1.103 1.083-.995 2.347-2.886 5.387-3.604 4.922-.751-.485-.407-2.406-.35-5.261.015-.754.011-1.271-1.141-1.539-.629-.145-1.241-.205-1.809-.205-2.273 0-3.841.953-2.95 1.119 1.571.293 1.42 3.692 1.054 5.16-.638 2.556-3.036-2.024-4.035-4.305-.241-.548-.315-.974-1.175-.974h-3.255c-.492 0-.787.16-.787.516 0 .602 2.96 6.72 5.786 9.77 2.756 2.975 5.48 2.708 7.376 2.708z" />
-                    </svg>
-                </a>
-            </div>
+                    </a>
+                </div>
 
-            <h1 class="title-font sm:text-4xl text-4xl mb-4 px-auto font-medium text-gray-900 dark:text-white">David Eritsyan</h1>
-<!--            <p class="mb-8 leading-relaxed"></p>-->
-            <div class="flex justify-center py-4">
-                <a href="{{ absLangURL "/articles/" }}">
-                    <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                        {{ i18n "articles" }}
-                    </button>
-                </a>
+            </div>
+            <div class="text-gray-700 dark:text-gray-300 text-lg text-center">
+                <p>Hi 👋!<br> Check out my GitHub profile and projects
+                    below.</p>
             </div>
         </div>
-    </div>
-</section>
+        <div class="container max-w-4xl mx-auto mt-20">
+            <h2 class="text-3xl font-semibold text-center text-gray-800 dark:text-white mb-10">{{ i18n "projects" }}</h2>
+            <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                {{ $enSites := where .Site.Sites "Language.Lang" "eq" "en" }}
+                {{ with index $enSites 0 }}
+                    {{ with .GetPage "section" "projects" }}
+                        {{ range .RegularPages }}
+                            {{ $translated := index (first 1 .Translations) 0 }}
+                            {{ if and $translated (eq $.Site.Language.Lang $translated.Lang) }}
+                                {{ partial "project-card.html" $translated }}
+                            {{ else }}
+                                {{ partial "project-card.html" . }}
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+            </div>
+        </div>
+        {{ $lang := .Site.Language.Lang }}
+
+        <div class="container max-w-4xl mx-auto mt-20">
+            <h2 class="text-3xl font-semibold text-center text-gray-800 dark:text-white mb-8">
+                {{ i18n "publications" }}
+            </h2>
+            <ul class="space-y-6 text-gray-700 dark:text-gray-300 px-4">
+                {{ range site.Data.publications }}
+                    <li>
+                        <a href="{{ .link }}"
+                           class="text-indigo-600 dark:text-indigo-400 hover:underline text-lg font-medium">
+                            {{ with index .title $lang }}
+                                {{ . }}
+                            {{ else }}
+                                {{ index .title "en" }}
+                            {{ end }}
+                        </a>
+                        <div class="text-xs italic text-gray-600 dark:text-gray-400">
+                            {{ with index .source $lang }}
+                                {{ . }}
+                            {{ else }}
+                                {{ index .source "en" }}
+                            {{ end }}
+                        </div>
+                    </li>
+                {{ end }}
+            </ul>
+        </div>
+    </section>
 {{ end }}

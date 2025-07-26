@@ -1,0 +1,30 @@
+<div class="bg-white dark:bg-slate-700 p-4 rounded-lg shadow transition-all transform hover:shadow-lg hover:shadow-indigo-200 dark:hover:shadow-indigo-800 hover:ring-1 hover:ring-indigo-300 dark:hover:ring-indigo-500">
+    <div class="flex gap-4 items-center">
+        {{ with .Params.icon }}
+        <img src="{{ . }}" class="w-16 h-16 object-cover rounded-full" alt="icon"/>
+        {{ end }}
+        <div>
+            {{ if and .Params.link (ne .Params.link "") }}
+            <a href="{{ .Params.link }}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:underline">
+                {{ .Title }}
+            </a>
+            {{ else if .RelPermalink }}
+            <a href="{{ .RelPermalink }}" class="text-indigo-600 dark:text-indigo-400 hover:underline">
+                {{ .Title }}
+            </a>
+            {{ else }}
+            {{ .Title }}
+            {{ end }}
+            <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">{{ .Params.description }}</p>
+
+            <div class="flex flex-wrap gap-3 mt-2 text-sm">
+                {{ with .Params.github }}
+                <a href="{{ . }}" class="text-gray-500 hover:text-indigo-500">GitHub</a>
+                {{ end }}
+                {{ with .Params.flathub }}
+                <a href="{{ . }}" class="text-gray-500 hover:text-indigo-500">Flathub</a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>

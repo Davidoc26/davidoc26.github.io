@@ -2,7 +2,9 @@
 
 @plugin "@tailwindcss/typography";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 .highlight div,
 .highlight pre {
-  overflow-x: auto;
+    overflow-x: auto;
 }

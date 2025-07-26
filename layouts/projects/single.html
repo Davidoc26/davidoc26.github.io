@@ -1,0 +1,89 @@
+{{ define "main" }}
+    <section class="container max-w-4xl mx-auto py-16 px-4">
+        <article class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg dark:shadow-slate-800">
+            <header class="text-center mb-10">
+                {{ if .Params.icon }}
+                    <img src="{{ .Params.icon }}" alt="{{ .Title }}"
+                         class="mx-auto w-24 h-24 object-contain mb-4 rounded-xl shadow-md">
+                {{ end }}
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">{{ .Title }}</h1>
+
+                <div class="flex justify-center items-center space-x-4 mt-4">
+                    {{ if .Params.github }}
+                        <a href="{{ .Params.github }}"
+                           class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black dark:text-white"
+                                 fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                        d="M12 0c-6.626 0-12 5.373-12 12
+                0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234
+                c-3.338.726-4.033-1.416-4.033-1.416
+                -.546-1.387-1.333-1.756-1.333-1.756
+                -1.089-.745.083-.729.083-.729
+                1.205.084 1.839 1.237 1.839 1.237
+                1.07 1.834 2.807 1.304 3.492.997
+                .107-.775.418-1.305.762-1.604
+                -2.665-.305-5.467-1.334-5.467-5.931
+                0-1.311.469-2.381 1.236-3.221
+                -.124-.303-.535-1.524.117-3.176
+                0 0 1.008-.322 3.301 1.23
+                .957-.266 1.983-.399 3.003-.404
+                1.02.005 2.047.138 3.006.404
+                2.291-1.552 3.297-1.23 3.297-1.23
+                .653 1.653.242 2.874.118 3.176
+                .77.84 1.235 1.911 1.235 3.221
+                0 4.609-2.807 5.624-5.479 5.921
+                .43.372.823 1.102.823 2.222v3.293
+                c0 .319.192.694.801.576
+                4.765-1.589 8.199-6.086 8.199-11.386
+                0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            GitHub
+                        </a>
+                    {{ end }}
+
+                    {{ if .Params.flathub }}
+                        <a href="{{ .Params.flathub }}"
+                           class="inline-flex items-center text-sm font-medium text-blue-600 gap-1 dark:text-blue-400 hover:underline">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                 class="h-5 w-5 fill-current dark:text-white">
+                                <g transform="matrix(0.04764281,0,0,0.04764281,-8.374002,-7.7360437)">
+                                    <path d="m 474.6092,255.1181 0,151.18111 -130.92667,75.59055 v -151.1811 z"/>
+                                    <path d="M 343.68252,330.70866 V 179.52756 L 212.75586,255.1181 Z"/>
+                                    <path d="m 218.61226,233.26169 c -13.54108,7.81795 -21.85641,22.22052 -21.85641,37.85641 v 119.18111 c 0,15.63589 8.31533,30.03846 21.85641,37.85641 l 103.21385,59.59055 c 13.54108,7.81794 30.17174,7.81794 43.71282,0 l 103.21386,-59.59055 c 13.54108,-7.81795 21.85641,-22.22052 21.85641,-37.85641 V 271.1181 c 0,-15.63589 -8.31533,-30.03846 -21.85641,-37.85641 L 365.53893,173.67115 c -13.54108,-7.81794 -30.17174,-7.81794 -43.71282,0 z m 130.92667,-31.87772 103.21386,59.59054 c 3.60767,2.08289 5.85641,5.97781 5.85641,10.14359 v 119.18111 c 0,4.16578 -2.24874,8.0607 -5.85641,10.14359 l -103.21386,59.59055 c -3.60767,2.08289 -8.10515,2.08289 -11.71282,0 L 234.61226,400.4428 c -3.60767,-2.08289 -5.85641,-5.97781 -5.85641,-10.14359 V 271.1181 c 0,-4.16578 2.24874,-8.0607 5.85641,-10.14359 l 103.21385,-59.59054 c 3.60767,-2.08289 8.10515,-2.08289 11.71282,0 z"/>
+                                </g>
+                            </svg>
+                            Flathub
+                        </a>
+                    {{ end }}
+                </div>
+            </header>
+
+            <div class="prose dark:prose-invert dark:text-slate-400 max-w-none mb-8">
+                {{ .Content }}
+            </div>
+
+            {{ if .Params.tags }}
+                <footer class="text-center">
+                    <div class="flex justify-center flex-wrap gap-2">
+                        {{ range .Params.tags }}
+                            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}"
+                               class="text-xs py-1 px-3 rounded bg-gray-200 dark:bg-slate-700 text-gray-800 dark:text-white">
+                                {{ with i18n . }}{{ . }}{{ else }}{{ . }}{{ end }}
+                            </a>
+                        {{ end }}
+                    </div>
+                </footer>
+            {{ end }}
+        </article>
+    </section>
+{{ end }}
+
+{{ define "scripts" }}
+    <script src="/js/zoom.js"></script>
+    <script>
+        mediumZoom(document.querySelectorAll("img"), {
+            background: '#ffffff30',
+        });
+    </script>
+{{ end }}

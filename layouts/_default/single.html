@@ -1,41 +1,46 @@
 {{ define "main" }}
-<article class="prose dark:prose-invert mt-8 mx-auto px-4">
+    <section class="container max-w-4xl mx-auto py-16 px-4">
+        <article class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg dark:shadow-slate-800">
+            <header class="text-center mb-6">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">{{ .Title }}</h1>
+                <p class="text-gray-500 dark:text-slate-400 text-sm">{{ .Date.Format "2006-01-02 15:04:05" }}</p>
+            </header>
 
-    <section class="flex flex-col">
-        <h1 class="text-2xl md:text-3xl text-center mb-0">{{.Title }}</h1>
-        <p class="text-gray-500 dark:text-slate-400 text-center my-1">{{ .Date.Format "2006-01-02 15:04:05" }}</p>
-        <div class="text-center mt-2">
-            {{ range .Params.categories }}
-            <a href="{{ absLangURL "/categories/" }}{{. | lower}}" class="mr-2 text-sm py-1 px-2 no-underline bg-gray-200 dark:bg-slate-700 rounded">{{
-                with i18n . }}
-                {{ . | humanize }}
-                {{ else }}
-                {{ . | humanize }}
-                {{ end }}</a>
+            <div class="flex justify-center flex-wrap gap-2 mb-4">
+                {{ range .Params.categories }}
+                    <a href="{{ absLangURL "/categories/" }}{{ . | lower }}"
+                       class="text-xs py-1 px-3 rounded bg-gray-200 dark:bg-slate-700 text-gray-800 dark:text-white">
+                        {{ with i18n . }}{{ . | humanize }}{{ else }}{{ . | humanize }}{{ end }}
+                    </a>
+                {{ end }}
+            </div>
+
+            <div class="prose dark:prose-invert dark:text-slate-400 max-w-none">
+                {{ .Content }}
+            </div>
+
+            {{ if .Params.tags }}
+                <footer class="mt-8 text-center">
+                    <div class="flex justify-center flex-wrap gap-2">
+                        {{ range .Params.tags }}
+                            <a href="{{ absLangURL "/tags/" }}{{ . | lower }}"
+                               class="text-xs py-1 px-3 rounded bg-gray-200 dark:bg-slate-700 text-gray-800 dark:text-white">
+                                {{ with i18n . }}{{ . }}{{ else }}{{ . }}{{ end }}
+                            </a>
+                        {{ end }}
+                    </div>
+                </footer>
             {{ end }}
-        </div>
+        </article>
     </section>
-
-    <div class="dark:text-slate-400">
-        {{ .Content }}
-    </div>
-    <div class="mt-4 mb-4 text-center">
-        {{ range .Params.tags }}
-        <a href="{{ absLangURL "/tags/" }}{{. | lower}}" class="no-underline mr-2 text-sm py-1 px-2 bg-gray-200 dark:bg-slate-700 rounded">{{ with
-            i18n . }}
-            {{ . }}
-            {{ else }}
-            {{ . }}
-            {{ end }}</a>
-        {{ end }}
-    </div>
-
-</article>
 {{ end }}
 
 {{ define "scripts" }}
-<script src="/js/zoom.js"></script>
-<script>mediumZoom(document.querySelectorAll("img"), {
-    background: '#ffffff30',
-})</script>
+    <script src="/js/zoom.js"></script>
+    <script>
+        mediumZoom(document.querySelectorAll("img"), {
+            background: '#ffffff30',
+        });
+
+    </script>
 {{ end }}

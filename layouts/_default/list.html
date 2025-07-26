@@ -1,70 +1,69 @@
-{{ define "title" }}{{ with i18n .Title }}{{.}}{{else}}{{.Title}}{{end}} | {{end}}
+{{ define "title" }}{{ with i18n .Title }}{{ . }}{{ else }}{{ .Title }}{{ end }} | {{ end }}
+
 {{ define "main" }}
-<section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-col text-center w-full mb-20">
-            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 dark:text-white">{{ with i18n .Title }}{{.}}{{else}}{{.Title}}{{end}}</h1>
+    <section class="container max-w-6xl mx-auto py-16 px-4">
+        <div class="text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+                {{ with i18n .Title }}{{ . }}{{ else }}{{ .Title }}{{ end }}
+            </h1>
         </div>
-        <div class="flex flex-wrap -m-4">
-            {{ range.Paginator.Pages }}
-            <div class="lg:w-1/3 sm:w-1/2 p-4">
-                <div class="flex relative">
-                    <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 dark:border-2 dark:border-slate-700 bg-white dark:bg-slate-900 h-full">
-                        <h1 class="text-base md:text-lg title-font font-bold text-indigo-500 dark:text-slate-100 mb-1"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-                        <div class="flex gap-2">
-                            {{ range.Params.Categories }}
-                            <p class="title-font text-sm font-medium text-gray-900 dark:text-slate-400 mb-3 bg-gray-200 dark:bg-slate-700 rounded px-2"><a href="{{ absLangURL "/categories/" }}{{. | lower}}">{{with i18n . }}{{ . | humanize }}{{else}}{{.|humanize}}{{end}}</a></p>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {{ range .Paginator.Pages }}
+                <div class="bg-white dark:bg-slate-900 rounded-2xl shadow hover:shadow-lg transition p-6 flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-xl font-semibold mb-2 text-indigo-600 dark:text-indigo-300">
+                            <a href="{{ .Permalink }}">{{ .Title }}</a>
+                        </h2>
+
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            {{ range .Params.categories }}
+                                <a href="{{ absLangURL "/categories/" }}{{ . | lower }}" class="text-xs py-1 px-2 rounded bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300">
+                                    {{ with i18n . }}{{ . | humanize }}{{ else }}{{ . | humanize }}{{ end }}
+                                </a>
                             {{ end }}
                         </div>
-                        <p class="leading-relaxed mb-8 dark:text-slate-400">{{.Summary}}</p>
+
+                        <p class="text-gray-700 dark:text-slate-400 text-sm mb-4">{{ .Summary }}</p>
+                    </div>
+
+                    <div class="flex flex-wrap items-end justify-between text-xs text-gray-500 dark:text-slate-400">
                         <div class="flex flex-wrap gap-2">
-                            {{ range.Params.Tags }}
-                            <p class="title-font text-sm font-medium text-gray-900 dark:text-slate-500"><a href="{{ absLangURL "/tags/" }}{{. | lower }}">{{ . }}</a></p>
+                            {{ range .Params.tags }}
+                                <a href="{{ absLangURL "/tags/" }}{{ . | lower }}" class="hover:underline">{{ . }}</a>
                             {{ end }}
-                            <div class="flex-grow"></div>
-                            <div class="self-end">
-                                <p class="title-font text-sm font-medium text-gray-900 dark:text-slate-500">
-                                    {{ .Date.Format "2006-01-02 15:04:05" }}
-                                </p>
-                            </div>
                         </div>
+                        <span>{{ .Date.Format "2006-01-02" }}</span>
                     </div>
                 </div>
-            </div>
             {{ end }}
         </div>
-    </div>
 
-    {{ $pag := $.Paginator }}
-    {{ if gt $pag.TotalPages 1 }}
-    <div class="mb-4 pagination-wrapper text-center">
-        <ul class="pagination flex justify-center">
-            {{ with $pag.First }}
-            <li>
-                <a href="{{ .URL }}" aria-label="First" class="py-2 px-4 bg-indigo-500 text-white font-semibold rounded-l-md">&laquo;&laquo;</a>
-            </li>
-            {{ end }}
-            <li {{ if not $pag.HasPrev }}class="disabled"{{ end }}>
-                <a href="{{ if $pag.HasPrev }}{{ $pag.Prev.URL }}{{ end }}" aria-label="Previous" class="py-2 px-4 bg-indigo-500 text-white font-semibold">&laquo;</a>
-            </li>
-            {{ range $pag.Pagers }}
-            <li {{ if eq . $pag }}class="active"{{ end }}>
-                <a href="{{ .URL }}" class="py-2 px-4 bg-indigo-200 text-indigo-700 font-semibold">{{ .PageNumber }}</a>
-            </li>
-            {{ end }}
-            <li {{ if not $pag.HasNext }}class="disabled"{{ end }}>
-                <a href="{{ if $pag.HasNext }}{{ $pag.Next.URL }}{{ end }}" aria-label="Next" class="py-2 px-4 bg-indigo-500 text-white font-semibold">&raquo;</a>
-            </li>
-            {{ with $pag.Last }}
-            <li>
-                <a href="{{ .URL }}" aria-label="Last" class="py-2 px-4 bg-indigo-500 text-white font-semibold rounded-r-md">&raquo;&raquo;</a>
-            </li>
-            {{ end }}
-        </ul>
-    </div>
-    {{ end }}
-
-
-</section>
-
+        {{ $pag := .Paginator }}
+        {{ if gt $pag.TotalPages 1 }}
+            <div class="mt-12 text-center">
+                <ul class="inline-flex space-x-2">
+                    {{ with $pag.First }}
+                        <li><a href="{{ .URL }}" class="py-2 px-4 rounded bg-indigo-500 text-white">&laquo;&laquo;</a></li>
+                    {{ end }}
+                    {{ if $pag.HasPrev }}
+                        <li><a href="{{ $pag.Prev.URL }}" class="py-2 px-4 rounded bg-indigo-500 text-white">&laquo;</a></li>
+                    {{ end }}
+                    {{ range $pag.Pagers }}
+                        <li>
+                            <a href="{{ .URL }}" class="py-2 px-4 rounded {{ if eq . $pag }}bg-indigo-700 text-white{{ else }}bg-indigo-100 text-indigo-700{{ end }}">
+                                {{ .PageNumber }}
+                            </a>
+                        </li>
+                    {{ end }}
+                    {{ if $pag.HasNext }}
+                        <li><a href="{{ $pag.Next.URL }}" class="py-2 px-4 rounded bg-indigo-500 text-white">&raquo;</a></li>
+                    {{ end }}
+                    {{ with $pag.Last }}
+                        <li><a href="{{ .URL }}" class="py-2 px-4 rounded bg-indigo-500 text-white">&raquo;&raquo;</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+        {{ end }}
+    </section>
 {{ end }}
